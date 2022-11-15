@@ -1,21 +1,22 @@
+'OpenScreen.c' + 'Map.h'
 시작 화면(openscreen)-> map[i][j], score
-맵
 
-/*맵베이스(mapbase) ->map[i][j]
-맵핑(mapping) ->map[i][j], score*/->맵
+'Map.c'
+맵베이스(mapbase) ->map[i][j]
+맵핑(mapping) ->map[i][j], score
 
+'Game.c' + 'Map.h'
 장매물 무빙(obstaclemove)->map[i][j], speed, score, otime
 장애물(obstaclemaker)->map[i][j]
 점프(jump)->map[i][j]
 장매물에 맞았을 때(gameover)->map[i][j], 맵
 몇 점 이상 올라가면 스피드 증가(score)->speed, score, otime
-맵
 
+'EndScreen.c' + 'Map.h'
 끝나는 화면(endscreen)->'speed, score, otime' + map[i][j], score
-맵
-
 이벤트 화면
 
+'사용된 함수'
 void openscreen(int map[size_y][size_x], int* score);
 void mapbase(int map[size_y][size_x]);
 void mapping(int map[size_y][size_x], int* score);
