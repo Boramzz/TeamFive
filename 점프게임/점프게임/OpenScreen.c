@@ -3,6 +3,8 @@
 //시작 화면*************************************************
 void openscreen(int map[size_y][size_x], int* score)
 {
+	int key;
+
 	printf("                                                         \n");
 	printf("          □□□  □    □ □      □  □□□            \n");
 	printf("              □  □    □ □□  □□ □    □           \n");
@@ -16,10 +18,28 @@ void openscreen(int map[size_y][size_x], int* score)
 	printf("               □      □  □□□□   □  □  □ □      \n");
 	printf("                 □□□   □      □  □  □  □ □□□□\n");
 	printf("                                                         \n");
-	printf("                   게임 로딩중입니다.                    \n");
+	printf("             Enterkey를 입력하면 시작합니다.             \n");
 	printf("                                                         \n");
-	Sleep(5000);
+	while (1)
+	{
+		if (_kbhit())
+		{
+			key = _getch();
+			if (key == 13)
+				break;
+		}
+	}
+	//Sleep(5000);
 	mapbase(map);
 	system("cls");
 	mapping(map, score);
+}
+
+int getKeyDown()
+{
+	if (_kbhit() != 0)
+	{
+		return _getch();
+	}
+	return 0;
 }

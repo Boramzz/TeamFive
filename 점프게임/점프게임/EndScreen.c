@@ -1,4 +1,3 @@
-#define _CRT_SECURE_NO_WARNINGS
 #include "EndScreen.h"
 
 int endscreen(int map[size_y][size_x], int* speed, int* score, int* otime)
@@ -18,7 +17,7 @@ int endscreen(int map[size_y][size_x], int* speed, int* score, int* otime)
 		mapping(map, score);
 		return 1;
 	}
-	else if (answer == 8282)
+	/*else if (answer == 8282)
 	{
 		*speed = 10;
 		*otime = 181;
@@ -26,7 +25,7 @@ int endscreen(int map[size_y][size_x], int* speed, int* score, int* otime)
 		mapbase(map);
 		mapping(map, score);
 		return 1;
-	}
+	}*/
 	else
 	{
 		system("cls");
@@ -39,4 +38,22 @@ int eventscreen()
 
 
 	return 0;
+}
+
+void rankscreen()
+{
+
+}
+
+void rankinput(int* score, int* otime)
+{
+	RANK cus;
+
+	system("cls");
+	printf("\n\t\t 기록을 달성했습니다.\n\n\t       You score : %d\n\n", *score / 2);
+	printf("\n\t\t 이름을 입력해주세요.\n\n");
+	scanf("%s", &cus.name);
+	cus.score = *score;
+	cus.time = *otime;
+
 }

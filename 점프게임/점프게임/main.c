@@ -17,7 +17,7 @@
 #define spd 100 //속도 초기값 
 #define oti 501 //장애물 재로딩 초기값 
 
-//**********************************************************
+////**********************************************************
 //void openscreen(int map[size_y][size_x], int* score);
 //void mapbase(int map[size_y][size_x]);
 //void mapping(int map[size_y][size_x], int* score);
@@ -433,7 +433,7 @@ int main()
 //	if ((*score % 100) == 0 && *speed <= 10)
 //		(*speed)--;
 //}
-//끝나는 화면**********************************************************
+////끝나는 화면**********************************************************
 //int endscreen(int map[size_y][size_x], int* speed, int* score, int* otime)
 //{
 //	int answer;
