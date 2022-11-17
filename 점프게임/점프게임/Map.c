@@ -96,3 +96,33 @@ void mapping(int map[size_y][size_x], int* score)
 		printf("\n");
 	}*/
 }
+
+int rankscreen()
+{
+	RANK rank[ARR_SIZE];
+	FILE* inf;
+	if ((fopen_s(&inf, "Rank.txt", "rb")) != 0)
+	{
+		printf("파일 오픈 실패\n");
+		exit(0);
+	}
+
+
+	for (int i = 0; i < ARR_SIZE; i++)
+	{
+		fscanf(inf, "%s %d %d\n", rank[i].name, &rank[i].score, &rank[i].time);
+	}
+
+	fclose(inf);
+
+	return 0;
+}
+
+void print(RANK arr[])
+{
+	for (int i = 0; i < ARR_SIZE; i++)
+	{
+		printf("%s, %d, %d\n", arr->name, arr->score, arr->time);
+		arr++;
+	}
+}
