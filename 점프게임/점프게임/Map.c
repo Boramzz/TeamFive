@@ -99,6 +99,8 @@ void mapping(int map[size_y][size_x], int* score)
 
 int rankscreen()
 {
+	int map[size_y][size_x];
+	int score = 0;
 	RANK rank[ARR_SIZE];
 	FILE* inf;
 	if ((fopen_s(&inf, "Rank.txt", "rb")) != 0)
@@ -115,6 +117,30 @@ int rankscreen()
 
 	fclose(inf);
 
+	system("cls");
+	printf("\n\t\tRanking\n\n");
+	printf("\t등수 이름        점수  시간\n");
+
+	for (int i = 0; i < ARR_SIZE; i++)
+	{
+		printf("\n\t%2d등 %-10s %5d %5d\n", i + 1, rank[i].name, rank[i].score, rank[i].time);
+	}
+
+	printf("\n");
+	printf("\n    enter을 누르면 오프닝으로 갑니다.\n");
+	if (getKeyDown() == 13)
+	{
+		openscreen(map, &score);
+	}
+	return 0;
+}
+
+int getKeyDown()
+{
+	if (_kbhit() != 0)
+	{
+		return _getch();
+	}
 	return 0;
 }
 

@@ -34,12 +34,3 @@ void openscreen(int map[size_y][size_x], int* score)
 	system("cls");
 	mapping(map, score);
 }
-
-int getKeyDown()
-{
-	if (_kbhit() != 0)
-	{
-		return _getch();
-	}
-	return 0;
-}
