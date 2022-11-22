@@ -11,6 +11,8 @@
 #define c_y size_y-2 //내 위치 
 #define c_x 2
 #define ARR_SIZE 5
+#define spd 100 //속도 초기값 
+#define oti 501 //장애물 재로딩 초기값
 
 typedef struct tag_rank {
 	char name[10];

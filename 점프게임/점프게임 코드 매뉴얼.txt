@@ -1,9 +1,13 @@
+'Map.h'
+해더파일 + 기호상수 + 랭킹관련 구조체
+
 'OpenScreen.c' + 'Map.h'
 시작 화면(openscreen)-> map[i][j], score
 
 'Map.c'
 맵베이스(mapbase) ->map[i][j]
 맵핑(mapping) ->map[i][j], score
+랭킹화면
 
 'Game.c' + 'Map.h'
 장매물 무빙(obstaclemove)->map[i][j], speed, score, otime
@@ -15,6 +19,8 @@
 'EndScreen.c' + 'Map.h'
 끝나는 화면(endscreen)->'speed, score, otime' + map[i][j], score
 이벤트 화면
+랭킹입력화면
+랭킹 정렬
 
 '사용된 함수'
 void openscreen(int map[size_y][size_x], int* score);
