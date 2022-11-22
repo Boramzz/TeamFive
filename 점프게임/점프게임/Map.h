@@ -23,5 +23,4 @@ typedef struct tag_rank {
 void mapbase(int map[size_y][size_x]);
 void mapping(int map[size_y][size_x], int* score);
 int rankscreen(int map[size_y][size_x], int* score);
-int getKeyDown();
 void print(RANK arr[]); // 삭제하기
