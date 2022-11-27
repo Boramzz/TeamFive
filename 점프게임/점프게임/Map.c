@@ -21,6 +21,8 @@ void mapbase(int map[size_y][size_x])
 //맵핑******************************************************
 void mapping(int map[size_y][size_x], int* score)
 {
+	
+
 	printf("□□□□□□□□□□□□□□□□□□□□□□□□□□□\n");
 	for (int i = 0; i < size_y; i++)
 	{
@@ -39,15 +41,18 @@ void mapping(int map[size_y][size_x], int* score)
 			if (map[i][j] == 3)
 				printf("□");
 		}
+		
 		printf("□");
 		if (i == 1)
-			printf(" Score : %d", (*score) / 2);
+			printf(" Score : %d | Time : %0.3lf", (*score) / 2);
+
 
 		if (i == 5)
-			printf(" 점프 키 : j 키");
+			printf(" 점프 키 : Space bar ");
 
 		printf("\n");
 	}
+
 	if (*score >= 1000)
 	{
 		printf("□□□□□□□□□□□□□□□□□\n");
@@ -126,8 +131,8 @@ int rankscreen(int map[size_y][size_x], int* score)
 	}
 
 	printf("\n");
-	printf("\n    enter을 누르면 게임 다시 시작\n");
-	printf("    spacebar를 누르면 게임이 종료됩니다.\n");
+	printf("\n    Space bar를 누르면 게임 다시 시작\n");
+	printf("    Enter을 누르면 게임이 종료됩니다.\n");
 	//커서 없이 키입력을 표현하기위해서 _getch()사용
 	while (1)
 	{
@@ -135,10 +140,10 @@ int rankscreen(int map[size_y][size_x], int* score)
 		{
 			key = _getch();
 			//enter키 입력시 게임 시작
-			if (key == 13) 
+			if (key == 32) 
 				break;
 			// spacebar키 입력시 게임 종료
-			else if (key == 32) 
+			else if (key == 13) 
 			{
 				system("cls");
 				return 0;

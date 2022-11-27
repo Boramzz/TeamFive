@@ -20,7 +20,7 @@ void openscreen(int map[size_y][size_x], int* score)
 	printf("                                                         \n");
 	printf("             Enterkey를 입력하면 시작합니다.             \n");
 	printf("                                                         \n");
-	// 게임로딩 시간을 없으니 게임 바로 시작되어서 Enter키를 누르면 게임 시작하는 것으로 바꾸었습니다.
+	// 게임로딩 시간을 없애니 게임 바로 시작되어서 Enter키를 누르면 게임 시작하는 것으로 바꾸었습니다.
 	while (1)
 	{
 		if (_kbhit())
@@ -31,7 +31,9 @@ void openscreen(int map[size_y][size_x], int* score)
 		}
 	}
 	//Sleep(5000);
+	
 	mapbase(map);
 	system("cls");
 	mapping(map, score);
+	
 }

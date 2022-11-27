@@ -43,12 +43,21 @@ int main()
 
 	openscreen(map, &score);
 
+
 	while (run)
 	{
+		/*clock_t start = clock();
+		for (;;) {
+			clock_t end = clock();
+			double time = (end - start) / CLOCKS_PER_SEC; //초단위 변환
+		}*/
 		obstaclemove(map, &speed, &score, &otime);
 		run = endscreen(map, &speed, &score, &otime);
+
 		score = 0;
 	}
+
+	
 
 	return 0;
 }

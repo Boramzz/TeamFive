@@ -130,7 +130,7 @@ void obstaclemove(int map[size_y][size_x], int* speed, int* score, int* otime)
 			if (k == 'p')
 				(*score) += 1000;
 
-			if (k == 'j')
+			if (k == 32)
 			{
 				while (cot <= 6)
 				{
