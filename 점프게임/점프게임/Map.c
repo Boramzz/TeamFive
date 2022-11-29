@@ -46,6 +46,9 @@ void mapping(int map[size_y][size_x], int* score)
 		if (i == 1)
 			printf(" Score : %d | Time : %0.3lf", (*score) / 2);
 
+		if (i == 3)
+			printf(" Time : %0.3lf");
+
 
 		if (i == 5)
 			printf(" Á¡ÇÁ Å° : Space bar ");
