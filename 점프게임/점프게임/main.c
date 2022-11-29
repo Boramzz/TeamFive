@@ -12,7 +12,6 @@
 //#define spd 100 //속도 초기값 
 //#define oti 501 //장애물 재로딩 초기값 
 
-#define _CRT_SECURE_NO_WARNINGS
 #include "OpenScreen.h"
 #include "Game.h"
 #include "EndScreen.h"
