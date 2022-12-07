@@ -17,7 +17,7 @@
 typedef struct tag_rank {
 	char name[10];
 	int score;
-	double time;
+	int time;
 }RANK;
 
 void mapbase(int map[size_y][size_x]);

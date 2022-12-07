@@ -55,6 +55,7 @@ int eventscreen()
 //랭크 입력
 void rankinput(int *score, double* timer)
 {
+	double itimer;
 	RANK user;
 	RANK rank[ARR_SIZE];
 	FILE* inf;
@@ -73,12 +74,13 @@ void rankinput(int *score, double* timer)
 	fclose(inf);
 
 	system("cls");
-	printf("\n\t\t 기록을 달성했습니다.\n\n\t       You score : %d\n\n", *score / 2);
+	printf("\n\t\t 기록을 달성했습니다.\n\n\t       You score : %d\n\n\t       You time : %0.lf\n\n", *score / 2, *timer);
 	printf("\n\t\t 이름을 입력해주세요.\n\n");
 	// 이름 입력
 	scanf("%s", &user.name); 
 	user.score = *score;
-	user.time = (int)*timer;
+	itimer = *timer;
+	user.time = (int)itimer;
 	// 5등과 기록한 점수와 시간을 비교 점수가 같으면 시간이 짧으면 5등 점수를 기록점수로 기록
 	if (rank[ARR_SIZE - 1].time > user.time || rank[ARR_SIZE - 1].time == 0)
 	{
