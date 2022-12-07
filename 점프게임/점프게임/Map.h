@@ -17,10 +17,10 @@
 typedef struct tag_rank {
 	char name[10];
 	int score;
-	int time;
+	double time;
 }RANK;
 
 void mapbase(int map[size_y][size_x]);
-void mapping(int map[size_y][size_x], int* score);
-int rankscreen(int map[size_y][size_x], int* score);
+void mapping(int map[size_y][size_x], int* score, double* timer);
+int rankscreen(int map[size_y][size_x], int* score, double* timer);
 void print(RANK arr[]); // 삭제하기

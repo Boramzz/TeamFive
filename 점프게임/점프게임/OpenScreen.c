@@ -1,7 +1,7 @@
 #include "Map.h"
 
 //시작 화면*************************************************
-void openscreen(int map[size_y][size_x], int* score)
+void openscreen(int map[size_y][size_x], int* score, double* timer)
 {
 	int key;
 
@@ -34,6 +34,6 @@ void openscreen(int map[size_y][size_x], int* score)
 	
 	mapbase(map);
 	system("cls");
-	mapping(map, score);
+	mapping(map, score, timer);
 	
 }

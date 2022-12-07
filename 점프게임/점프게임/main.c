@@ -36,10 +36,11 @@ int main()
 	int speed = spd;
 	int score = 0;
 	int otime = oti;
+	double timer = 0;
 
 	srand((unsigned)time(NULL));
 
-	openscreen(map, &score);
+	openscreen(map, &score, &timer);
 
 
 	while (run)
@@ -49,8 +50,8 @@ int main()
 			clock_t end = clock();
 			double time = (end - start) / CLOCKS_PER_SEC; //초단위 변환
 		}*/
-		obstaclemove(map, &speed, &score, &otime);
-		run = endscreen(map, &speed, &score, &otime);
+		obstaclemove(map, &speed, &score, &otime, &timer);
+		run = endscreen(map, &speed, &score, &otime, &timer);
 
 		score = 0;
 	}

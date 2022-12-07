@@ -1,16 +1,16 @@
 #include "EndScreen.h"
 
-int endscreen(int map[size_y][size_x], int* speed, int* score, int* otime)
+int endscreen(int map[size_y][size_x], int* speed, int* score, int* otime, double* timer)
 {
 	int answer;
 
 	if (*score >= 3000) //점수가 3000이상이면 랭크 기록 화면으로 이동 
 	{
-		rankinput(score, otime);
+		rankinput(score, timer);
 	}
 
 	system("cls");
-	printf("\n\t\tGame over~~\n\n\t       You score : %d\n\n", *score / 2);
+	printf("\n\t\tGame over~~\n\n\t       You score : %d\n\n\t       You time : %0.lf\n\n", *score / 2, *timer);
 	printf("\n\t\t re game?\n\n");
 	printf("\n\t\t 1.go\n\n");
 	printf("\n\t\t 2.ranking\n\n");
@@ -20,13 +20,13 @@ int endscreen(int map[size_y][size_x], int* speed, int* score, int* otime)
 	{
 		system("cls");
 		mapbase(map);
-		mapping(map, score);
+		mapping(map, score, timer);
 		return 1;
 	}
 	else if (answer == 2)
 	{
 		system("cls");
-		rankscreen(map, score);
+		rankscreen(map, score, timer);
 	}
 	/*else if (answer == 8282)
 	{
@@ -53,7 +53,7 @@ int eventscreen()
 }
 
 //랭크 입력
-void rankinput(int *score, int *otime)
+void rankinput(int *score, double* timer)
 {
 	RANK user;
 	RANK rank[ARR_SIZE];
@@ -78,7 +78,7 @@ void rankinput(int *score, int *otime)
 	// 이름 입력
 	scanf("%s", &user.name); 
 	user.score = *score;
-	user.time = *otime;
+	user.time = (int)*timer;
 	// 5등과 기록한 점수와 시간을 비교 점수가 같으면 시간이 짧으면 5등 점수를 기록점수로 기록
 	if (rank[ARR_SIZE - 1].time > user.time || rank[ARR_SIZE - 1].time == 0)
 	{

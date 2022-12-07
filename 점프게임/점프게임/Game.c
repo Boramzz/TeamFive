@@ -1,7 +1,7 @@
 #include "Game.h"
 
 //점프*******************************************************
-void jump(int map[size_y][size_x], int* score, int cot)
+void jump(int map[size_y][size_x], int* score, int cot, double* timer)
 {
 	int cx, cy;
 
@@ -24,7 +24,7 @@ void jump(int map[size_y][size_x], int* score, int cot)
 		else
 		{
 			map[cy - 1][cx] = 2; map[cy][cx] = 0;
-			mapping(map, score);
+			mapping(map, score, timer);
 		}
 	}
 	if (cot >= 4)
@@ -34,7 +34,7 @@ void jump(int map[size_y][size_x], int* score, int cot)
 		else
 		{
 			map[cy][cx] = 0; map[cy + 1][cx] = 2;
-			mapping(map, score);
+			mapping(map, score, timer);
 		}
 	}
 }
@@ -114,14 +114,16 @@ void obstaclemaker(int map[size_y][size_x])
 }
 
 //장애물 무빙*****************************************************
-void obstaclemove(int map[size_y][size_x], int* speed, int* score, int* otime)
+void obstaclemove(int map[size_y][size_x], int* speed, int* score, int* otime, double* timer)
 {
 	int obstime/*장애물 재로딩 시간*/, run2 = 1, k, cot = 1, time = 0, ctime = 0;
 	//점프할 때 좀 더 매끄럽게 하기위해 점프 동작이 끝나면 계속 0으로 초기화시켜줌  
 	obstime = rand() % *otime + *otime - 100; //첫 장애물 생성 
+	clock_t start = clock();
 
 	while (run2)
 	{
+		*timer = StopWatch(start);
 		//점프키를 눌렀을 때
 		if (_kbhit())
 		{
@@ -138,14 +140,14 @@ void obstaclemove(int map[size_y][size_x], int* speed, int* score, int* otime)
 					if (cot == 1)
 					{
 						system("cls");
-						jump(map, score, cot);
+						jump(map, score, cot, timer);
 						++cot;
 						Sleep(30);
 					}
 					if ((time % 25) == 0 && cot > 1)
 					{
 						system("cls");
-						jump(map, score, cot);
+						jump(map, score, cot, timer);
 						if (cot == 6)
 							time = 0;
 						++cot;
@@ -168,12 +170,12 @@ void obstaclemove(int map[size_y][size_x], int* speed, int* score, int* otime)
 							}
 						}
 						system("cls");
-						mapping(map, score);
+						mapping(map, score, timer);
 						Sleep(*speed);
 					}
 
 					//둘이 겹쳤을 때
-					run2 = gameover(map, score);
+					run2 = gameover(map, score, timer);
 					if (run2 == 0)
 						break;
 
@@ -182,7 +184,7 @@ void obstaclemove(int map[size_y][size_x], int* speed, int* score, int* otime)
 					{
 						obstaclemaker(map);
 						system("cls");
-						mapping(map, score);
+						mapping(map, score, timer);
 						ctime = 0;
 						obstime = rand() % *otime + *otime - 100;
 					}
@@ -213,19 +215,19 @@ void obstaclemove(int map[size_y][size_x], int* speed, int* score, int* otime)
 				}
 			}
 			system("cls");
-			mapping(map, score);
+			mapping(map, score, timer);
 			Sleep(*speed);
 		}
 
 		//둘이 겹쳤을 때 
-		run2 = gameover(map, score);
+		run2 = gameover(map, score, timer);
 
 		//장애물 생성 
 		if ((ctime % obstime) == 0)
 		{
 			obstaclemaker(map);
 			system("cls");
-			mapping(map, score);
+			mapping(map, score, timer);
 			ctime = 0;
 			obstime = rand() % *otime + *otime - 100;
 		}
@@ -237,7 +239,7 @@ void obstaclemove(int map[size_y][size_x], int* speed, int* score, int* otime)
 }
 
 //장애물에 맞았을 때**************************************************
-int gameover(int map[size_y][size_x], int* score)
+int gameover(int map[size_y][size_x], int* score, double* timer)
 {
 	for (int i = 0; i < size_y; i++)
 	{
@@ -249,7 +251,7 @@ int gameover(int map[size_y][size_x], int* score)
 			if (i == size_y - 1 && j == size_x - 1 && map[i][j] != 2)
 			{
 				system("cls");
-				mapping(map, score);
+				mapping(map, score, timer);
 				return 0;
 			}
 		}
@@ -266,4 +268,14 @@ void Score(int* speed, int* score, int* otime)
 	}
 	if ((*score % 100) == 0 && *speed <= 10)
 		(*speed)--;
+}
+
+double StopWatch(time_t start)
+{
+	double result = 0;
+	time_t end = clock();
+	
+	result = (double)(end - start) / CLOCKS_PER_SEC;
+
+	return result;
 }

@@ -19,7 +19,7 @@ void mapbase(int map[size_y][size_x])
 }
 
 //¸ÊÇÎ******************************************************
-void mapping(int map[size_y][size_x], int* score)
+void mapping(int map[size_y][size_x], int* score, double* timer)
 {
 	
 
@@ -44,10 +44,10 @@ void mapping(int map[size_y][size_x], int* score)
 		
 		printf("¡à");
 		if (i == 1)
-			printf(" Score : %d | Time : %0.3lf", (*score) / 2);
+			printf(" Score : %d", (*score) / 2);
 
 		if (i == 3)
-			printf(" Time : %0.3lf");
+			printf(" Time : %0.3lf", *timer);
 
 
 		if (i == 5)
@@ -105,7 +105,7 @@ void mapping(int map[size_y][size_x], int* score)
 	}*/
 }
 
-int rankscreen(int map[size_y][size_x], int* score)
+int rankscreen(int map[size_y][size_x], int* score, double* timer)
 {
 	int key;
 	RANK rank[ARR_SIZE];
@@ -156,7 +156,7 @@ int rankscreen(int map[size_y][size_x], int* score)
 	}
 	system("cls");
 	mapbase(map);
-	mapping(map, score);
+	mapping(map, score, timer);
 	return 1;
 }
 
