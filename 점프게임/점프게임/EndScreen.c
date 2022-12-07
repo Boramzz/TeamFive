@@ -77,7 +77,7 @@ void rankinput(int *score, double* timer)
 	printf("\n\t\t 기록을 달성했습니다.\n\n\t       You score : %d\n\n\t       You time : %0.lf\n\n", *score / 2, *timer);
 	printf("\n\t\t 이름을 입력해주세요.\n\n");
 	// 이름 입력
-	scanf("%s", &user.name); 
+	scanf("%s", user.name); 
 	user.score = *score;
 	itimer = *timer;
 	user.time = (int)itimer;
