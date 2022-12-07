@@ -39,6 +39,48 @@ void jump(int map[size_y][size_x], int* score, int cot, double* timer)
 	}
 }
 
+//아이템**********************************************************
+void itemmaker(int map[size_y][size_x])
+{
+	int b;
+	int itm[5][size_y - 1];
+
+	b = rand() % 2;
+
+	if (b == 0)
+	{
+		itm[b][size_y - 10] = 0;
+		itm[b][size_y - 9] = 0;
+		itm[b][size_y - 8] = 0;
+		itm[b][size_y - 7] = 0;
+		itm[b][size_y - 6] = 0;
+		itm[b][size_y - 5] = 0;
+		itm[b][size_y - 4] = 0;
+		itm[b][size_y - 3] = 0;
+		itm[b][size_y - 2] = 4;
+		for (int i = 0; i < size_y - 1; i++)
+		{
+			map[i][size_x - 1] = itm[b][i];
+		}
+	}
+	if (b == 1)
+	{
+		itm[b][size_y - 10] = 0;
+		itm[b][size_y - 9] = 0;
+		itm[b][size_y - 8] = 0;
+		itm[b][size_y - 7] = 0;
+		itm[b][size_y - 6] = 0;
+		itm[b][size_y - 5] = 0;
+		itm[b][size_y - 4] = 0;
+		itm[b][size_y - 3] = 4;
+		itm[b][size_y - 2] = 0;
+		for (int i = 0; i < size_y - 1; i++)
+		{
+			map[i][size_x - 1] = itm[b][i];
+		}
+	}
+}
+
 //장애물**********************************************************
 void obstaclemaker(int map[size_y][size_x])
 {
@@ -176,13 +218,23 @@ void obstaclemove(int map[size_y][size_x], int* speed, int* score, int* otime, d
 
 					//둘이 겹쳤을 때
 					run2 = gameover(map, score, timer);
+					if (run2 == 2) { //아이템점수
+						*score += 100;
+					}
+
 					if (run2 == 0)
 						break;
 
 					//장애물 생성 
 					if ((ctime % obstime) == 0)
 					{
-						obstaclemaker(map);
+						if (rand() % 2 == 0) { //0이면 장애물생성
+							obstaclemaker(map);
+						}
+						else { //바닥이나 바닥에서 한칸 위 둘 중 하나에 랜덤으로 아이템 생성
+							itemmaker(map);
+						}
+
 						system("cls");
 						mapping(map, score, timer);
 						ctime = 0;
@@ -221,11 +273,19 @@ void obstaclemove(int map[size_y][size_x], int* speed, int* score, int* otime, d
 
 		//둘이 겹쳤을 때 
 		run2 = gameover(map, score, timer);
+		if (run2 == 2) { //아이템점수
+			*score += 100;
+		}
 
 		//장애물 생성 
 		if ((ctime % obstime) == 0)
 		{
-			obstaclemaker(map);
+			if (rand() % 2 == 0) {
+				obstaclemaker(map);
+			}
+			else {
+				itemmaker(map);
+			}
 			system("cls");
 			mapping(map, score, timer);
 			ctime = 0;
@@ -252,7 +312,13 @@ int gameover(int map[size_y][size_x], int* score, double* timer)
 			{
 				system("cls");
 				mapping(map, score, timer);
-				return 0;
+
+				if (map[i][j] == 4) { 
+					return 2; 
+				}
+				else if (map[i][j] != 2) { 
+					return 0; 
+				} 
 			}
 		}
 	}
