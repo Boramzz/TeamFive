@@ -40,6 +40,10 @@ void mapping(int map[size_y][size_x], int* score, double* timer)
 
 			if (map[i][j] == 3)
 				printf("□");
+			
+			if (map[i][j] == 4) //아이템 4번, $모양
+				printf("$");
+
 		}
 		
 		printf("□");
