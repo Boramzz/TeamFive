@@ -158,6 +158,7 @@ void obstaclemaker(int map[size_y][size_x])
 //장애물 무빙*****************************************************
 void obstaclemove(int map[size_y][size_x], int* speed, int* score, int* otime, double* timer)
 {
+	int cccc = 0;
 	int obstime/*장애물 재로딩 시간*/, run2 = 1, k, cot = 1, time = 0, ctime = 0;
 	//점프할 때 좀 더 매끄럽게 하기위해 점프 동작이 끝나면 계속 0으로 초기화시켜줌  
 	obstime = rand() % *otime + *otime - 100; //첫 장애물 생성 
@@ -220,6 +221,8 @@ void obstaclemove(int map[size_y][size_x], int* speed, int* score, int* otime, d
 					run2 = gameover(map, score, timer);
 					if (run2 == 2) { //아이템점수
 						*score += 100;
+						run2 = 1;
+						cccc++;
 					}
 
 					if (run2 == 0)
@@ -264,6 +267,11 @@ void obstaclemove(int map[size_y][size_x], int* speed, int* score, int* otime, d
 						map[i][j - 1] = map[i][j];
 						map[i][j] = 0;
 					}
+
+					if (map[i][j] == 4 && map[i][j - 1] == 2) 
+					{
+						*score += 100;
+					}
 				}
 			}
 			system("cls");
@@ -275,6 +283,9 @@ void obstaclemove(int map[size_y][size_x], int* speed, int* score, int* otime, d
 		run2 = gameover(map, score, timer);
 		if (run2 == 2) { //아이템점수
 			*score += 100;
+			run2 = 1;
+			cccc++;
+			break;
 		}
 
 		//장애물 생성 
