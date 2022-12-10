@@ -4,7 +4,7 @@ int endscreen(int map[size_y][size_x], int* speed, int* score, int* otime, doubl
 {
 	int answer;
 
-	if (*score >= 3000) //점수가 3000이상이면 랭크 기록 화면으로 이동 
+	if (*score >= 300) //점수가 150이상이면 랭크 기록 화면으로 이동 
 	{
 		rankinput(score, timer);
 	}
@@ -78,9 +78,9 @@ void rankinput(int *score, double* timer)
 	printf("\n\t\t 이름을 입력해주세요.\n\n");
 	// 이름 입력
 	scanf("%s", user.name); 
-	user.score = *score;
+	user.score = *score/2;
 	itimer = *timer;
-	user.time = (int)itimer;
+	user.time = (int)(itimer + 0.5);
 	// 5등과 기록한 점수와 시간을 비교 점수가 같으면 시간이 짧으면 5등 점수를 기록점수로 기록
 	if (rank[ARR_SIZE - 1].time > user.time || rank[ARR_SIZE - 1].time == 0)
 	{

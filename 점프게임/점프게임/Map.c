@@ -60,7 +60,7 @@ void mapping(int map[size_y][size_x], int* score, double* timer)
 		printf("\n");
 	}
 
-	if (*score >= 1000)
+	if (*score >= 100)
 	{
 		printf("□□□□□□□□□□□□□□□□□\n");
 		printf("□  □□□              □□□  □\n");
@@ -69,7 +69,7 @@ void mapping(int map[size_y][size_x], int* score, double* timer)
 		printf("□         □        □         □\n");
 		printf("□      □□□      □□□      □\n");
 	}
-	if (*score >= 2000)
+	if (*score >= 200)
 	{
 		printf("□     □    □    □    □     □\n");
 		printf("□     □     □□□     □     □\n");
@@ -78,7 +78,7 @@ void mapping(int map[size_y][size_x], int* score, double* timer)
 		printf("□                              □\n");
 		printf("□  □□□              □□□  □\n");
 	}
-	if (*score >= 3000)
+	if (*score >= 300)
 	{
 		printf("□ □    □□□□□□□□    □ □\n");
 		printf("□ □                        □ □\n");
@@ -87,26 +87,6 @@ void mapping(int map[size_y][size_x], int* score, double* timer)
 		printf("□  □□□              □□□  □\n");
 		printf("□□□□□□□□□□□□□□□□□\n");
 	}
-	/*실험용 맵
-	printf("\n\n\n");
-	for(int i=0;i<size_y;i++)
-	{
-		for(int j=0;j<size_x;j++)
-		{
-			if(map[i][j]==0)
-			printf("%d",map[i][j]);
-
-			if(map[i][j]==1)
-			printf("%d",map[i][j]);
-
-			if(map[i][j]==2)
-			printf("%d",map[i][j]);
-
-			if(map[i][j]==3)
-			printf("%d",map[i][j]);
-		}
-		printf("\n");
-	}*/
 }
 
 int rankscreen(int map[size_y][size_x], int* score, double* timer)
@@ -162,13 +142,4 @@ int rankscreen(int map[size_y][size_x], int* score, double* timer)
 	mapbase(map);
 	mapping(map, score, timer);
 	return 1;
-}
-
-void print(RANK arr[])/*삭제*/
-{
-	for (int i = 0; i < ARR_SIZE; i++)
-	{
-		printf("%s, %d, %d\n", arr->name, arr->score, arr->time);
-		arr++;
-	}
 }
