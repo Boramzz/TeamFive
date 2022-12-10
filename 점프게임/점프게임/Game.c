@@ -171,6 +171,9 @@ void obstaclemove(int map[size_y][size_x], int* speed, int* score, int* otime, d
 		if (_kbhit())
 		{
 			k = _getch();
+
+			if (k == 27)
+				exit(1);
 			//p는 점수 오르는 키(점수에 따른 이벤트 발생 여부 확인을 위해 만듬), 이거 해도 속도는 증가 ㄴㄴ 
 			if (k == 'p')
 				(*score) += 1000;

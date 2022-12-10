@@ -10,7 +10,7 @@ int endscreen(int map[size_y][size_x], int* speed, int* score, int* otime, doubl
 	}
 
 	system("cls");
-	printf("\n\t\tGame over~~\n\n\t       You score : %d\n\n\t       You time : %0.lf\n\n", *score / 2, *timer);
+	printf("\n\t\tGame over~~\n\n\t       Your score : %d\n\n\t       Your time : %0.lf\n\n", *score / 2, *timer);
 	printf("\n\t\t re game?\n\n");
 	printf("\n\t\t 1.go\n\n");
 	printf("\n\t\t 2.ranking\n\n");
