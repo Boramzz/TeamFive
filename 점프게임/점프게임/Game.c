@@ -159,6 +159,7 @@ void obstaclemaker(int map[size_y][size_x])
 void obstaclemove(int map[size_y][size_x], int* speed, int* score, int* otime, double* timer)
 {
 	int cccc = 0;
+	int count = 0;
 	int obstime/*장애물 재로딩 시간*/, run2 = 1, k, cot = 1, time = 0, ctime = 0;
 	//점프할 때 좀 더 매끄럽게 하기위해 점프 동작이 끝나면 계속 0으로 초기화시켜줌  
 	obstime = rand() % *otime + *otime - 100; //첫 장애물 생성 
@@ -175,8 +176,8 @@ void obstaclemove(int map[size_y][size_x], int* speed, int* score, int* otime, d
 			if (k == 27)
 				exit(1);
 			//p는 점수 오르는 키(점수에 따른 이벤트 발생 여부 확인을 위해 만듬), 이거 해도 속도는 증가 ㄴㄴ 
-			if (k == 'p')
-				(*score) += 1000;
+			else if (k == 'p')
+				(*score) += 100;
 
 			if (k == 32)
 			{
@@ -202,8 +203,8 @@ void obstaclemove(int map[size_y][size_x], int* speed, int* score, int* otime, d
 					//장애물 
 					if ((time % 22) == 0)
 					{
-						++(*score); //점수
-						Score(speed, score, otime);
+						++count; //점수
+						Score(speed, count, otime);
 						for (int i = 0; i < size_y - 1; i++)
 						{
 							for (int j = 0; j < size_x; j++)
@@ -235,6 +236,7 @@ void obstaclemove(int map[size_y][size_x], int* speed, int* score, int* otime, d
 					if ((ctime % obstime) == 0)
 					{
 						if (rand() % 2 == 0) { //0이면 장애물생성
+							(*score) += 2; //점수
 							obstaclemaker(map);
 						}
 						else { //바닥이나 바닥에서 한칸 위 둘 중 하나에 랜덤으로 아이템 생성
@@ -259,8 +261,8 @@ void obstaclemove(int map[size_y][size_x], int* speed, int* score, int* otime, d
 		//장애물 
 		if ((time % 22) == 0)
 		{
-			++(*score); //점수
-			Score(speed, score, otime);
+			++count;
+			Score(speed, count, otime);
 			for (int i = 0; i < size_y - 1; i++)
 			{
 				for (int j = 0; j < size_x; j++)
@@ -271,7 +273,7 @@ void obstaclemove(int map[size_y][size_x], int* speed, int* score, int* otime, d
 						map[i][j] = 0;
 					}
 
-					if (map[i][j] == 4 && map[i][j - 1] == 2) 
+					if (map[i][j] == 4 && map[i][j - 1] == 2)
 					{
 						*score += 100;
 					}
@@ -295,6 +297,7 @@ void obstaclemove(int map[size_y][size_x], int* speed, int* score, int* otime, d
 		if ((ctime % obstime) == 0)
 		{
 			if (rand() % 2 == 0) {
+				(*score) += 2; //점수
 				obstaclemaker(map);
 			}
 			else {
@@ -339,14 +342,14 @@ int gameover(int map[size_y][size_x], int* score, double* timer)
 }
 
 //몇 점 이상 올라가면 스피드 조절**************************************  
-void Score(int* speed, int* score, int* otime)
+void Score(int* speed, int count, int* otime)
 {
-	if ((*score % 100) == 0 && *speed > 20)
+	if ((count % 100) == 0 && *speed > 20)
 	{
 		*speed -= 5;
 		*otime -= 20;
 	}
-	if ((*score % 100) == 0 && *speed <= 10)
+	if ((count % 100) == 0 && *speed <= 10)
 		(*speed)--;
 }
 
