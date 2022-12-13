@@ -89,7 +89,7 @@ void mapping(int map[size_y][size_x], int* score, double* timer)
 	}
 }
 
-int rankscreen(int map[size_y][size_x], int* score, double* timer)
+int rankscreen(int map[size_y][size_x], int* score, double* timer) //È²ÅÂÈÆ
 {
 	int key;
 	RANK rank[ARR_SIZE];

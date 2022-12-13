@@ -28,15 +28,6 @@ int endscreen(int map[size_y][size_x], int* speed, int* score, int* otime, doubl
 		system("cls");
 		rankscreen(map, score, timer);
 	}
-	/*else if (answer == 8282)
-	{
-		*speed = 10;
-		*otime = 181;
-		system("cls");
-		mapbase(map);
-		mapping(map, score);
-		return 1;
-	}*/
 	else
 	{
 		system("cls");
@@ -53,7 +44,7 @@ int eventscreen()
 }
 
 //랭크 입력
-void rankinput(int *score, double* timer)
+void rankinput(int *score, double* timer) //황태훈
 {
 	double itimer;
 	RANK user;
@@ -93,7 +84,7 @@ void rankinput(int *score, double* timer)
 }
 
 //랭크 정렬
-void sort(RANK arr[]) // 정렬되지 않은 상태에서 같은 키값을 가진 원소의 순서가 정렬 후에도 유지하기위해서 버블정렬 사용
+void sort(RANK arr[]) // 정렬되지 않은 상태에서 같은 키값을 가진 원소의 순서가 정렬 후에도 유지하기위해서 버블정렬 사용 //황태훈
 {
 	FILE* outf;
 	RANK temp;

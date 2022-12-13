@@ -353,7 +353,7 @@ void Score(int* speed, int count, int* otime)
 		(*speed)--;
 }
 
-double StopWatch(time_t start)
+double StopWatch(time_t start) //È²ÅÂÈÆ
 {
 	double result = 0;
 	time_t end = clock();
