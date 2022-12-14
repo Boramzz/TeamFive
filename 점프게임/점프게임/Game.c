@@ -40,7 +40,7 @@ void jump(int map[size_y][size_x], int* score, int cot, double* timer)
 }
 
 //아이템**********************************************************
-void itemmaker(int map[size_y][size_x])
+void itemmaker(int map[size_y][size_x]) //손수진
 {
 	int b;
 	int itm[5][size_y - 1];
@@ -221,8 +221,8 @@ void obstaclemove(int map[size_y][size_x], int* speed, int* score, int* otime, d
 						Sleep(*speed);
 					}
 
-					//둘이 겹쳤을 때
-					run2 = gameover(map, score, timer);
+					//손수진
+					run2 = gameover(map, score, timer); //둘이 겹쳤을 때
 					if (run2 == 2) { //아이템점수
 						*score += 100;
 						run2 = 1;
